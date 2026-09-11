@@ -1,0 +1,28 @@
+{
+  "recorded_at": "2026-09-12",
+  "version": "0.3.1",
+  "prerelease": true,
+  "artifacts": [
+    {
+      "path": "build/QuadMonitor-0.3.1-arm64.pkg",
+      "bytes": 809767,
+      "sha256": "a7a08fdedfa4562e582c5900ebc046fba4d7bb62605d2035a768645697bc6df9",
+      "role": "Developer ID signed macOS installer",
+      "download_url": "https://github.com/kimmingul/quadmonitorDriver/releases/download/v0.3.1/QuadMonitor-0.3.1-arm64.pkg"
+    },
+    {
+      "path": "build/QuadMonitor-0.3.1-arm64.app.zip",
+      "bytes": 805823,
+      "sha256": "daa2687ba1c34e5dcebceb4c8b8fdb6801a1a2462a5fde00bd57b124fd886b70",
+      "role": "Developer ID signed macOS app archive",
+      "download_url": "https://github.com/kimmingul/quadmonitorDriver/releases/download/v0.3.1/QuadMonitor-0.3.1-arm64.app.zip"
+    },
+    {
+      "path": "build/QuadMonitor-Windows-ARM64-source.zip",
+      "bytes": 17934,
+      "sha256": "459db3a694906536109653979de120837f615ddc2dcbcd0369d3d83c5d273bfc",
+      "role": "Windows shared-core source only",
+      "download_url": "https://github.com/kimmingul/quadmonitorDriver/releases/download/v0.3.1/QuadMonitor-Windows-ARM64-source.zip"
+    }
+  ]
+}

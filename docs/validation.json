@@ -1,0 +1,95 @@
+{
+  "date": "2026-09-11",
+  "scope": "Product repository reorganization; runtime behavior unchanged",
+  "backup_verified": true,
+  "archive": "/Users/min/Projects/quadmonitorDriver-backups/product-20260911-231636",
+  "removed": {
+    "complete": true,
+    "roots": 49,
+    "files": 6161,
+    "bytes": 1143270787
+  },
+  "retained_tests": {
+    "Swift": 47,
+    "Python_product_oracle": 29,
+    "CMake_core": 4,
+    "total": 80
+  },
+  "retired_legacy_python_tests": 49,
+  "asan_ubsan_harnesses_passed": 2,
+  "isolated_developer_id_installer_build": true,
+  "isolated_app_relocation_check": true,
+  "extracted_windows_source_zip_host_tests": true,
+  "runtime_source_changes": "Only historical path comments in three files; algorithms unchanged",
+  "installed_app_and_existing_macos_pkg_replaced": false,
+  "physical_usb_validation_performed": false,
+  "git_history_and_index_preserved": true,
+  "links_checked": 63,
+  "source_naming_update": {
+    "date": "2026-09-11",
+    "source_folder": "App",
+    "swift_package_and_app_module": "QuadMonitor",
+    "readme_racerusb_origin_explicit": true,
+    "backup_and_evidence": "/Users/min/Projects/quadmonitorDriver-backups/rename-20260911-233805",
+    "tests": {
+      "Swift": 47,
+      "Python_product_oracle": 29,
+      "CMake_core": 4,
+      "total": 80
+    },
+    "isolated_developer_id_app_and_installer_build": true,
+    "isolated_app_relocation_check": true,
+    "packaged_localization_and_english_fallback": true,
+    "signed_app_source_hashes_matched": 53,
+    "extracted_windows_zip_host_tests_passed": 4,
+    "app_algorithm_changes": false,
+    "existing_macos_app_and_installer_replaced": false,
+    "physical_usb_validation_performed": false,
+    "initial_build_issue": "Source manifest path corrected from QuadMonitor/Sources to App/Sources; signed app and installer checks then passed"
+  },
+  "documentation_languages": {
+    "date": "2026-09-12",
+    "markdown_files_english": 13,
+    "markdown_files_translated": 11,
+    "existing_english_markdown_files_retained": 2,
+    "artifact_languages": [
+      "en",
+      "ko",
+      "zh-Hans"
+    ],
+    "default_artifact_language": "en",
+    "raw_measurements_preserved": true,
+    "interactive_logic_preserved_except_localized_strings": true,
+    "browser_checks": {
+      "languages": 3,
+      "history_steps_per_language": 6,
+      "cpu_cases_per_language": 6,
+      "chart_combinations_per_language": 6,
+      "console_errors": 0,
+      "mobile_overflow": false,
+      "desktop_and_mobile_screenshots_reviewed": true
+    },
+    "local_links_checked": 107,
+    "app_code_or_releases_changed": false,
+    "backup_and_validation_directory": "/Users/min/Projects/quadmonitorDriver-backups/docs-languages-20260911-234908"
+  },
+  "release_0_3_1": {
+    "date": "2026-09-12",
+    "prerelease": true,
+    "app_build": 4,
+    "product_tests": 80,
+    "sanitizer_harnesses": 2,
+    "lifecycle_scenarios": [
+      "bounded",
+      "manual_stop",
+      "worker_failure"
+    ],
+    "developer_id_application_signature": true,
+    "developer_id_installer_signature": true,
+    "relocated_execution": true,
+    "notarized": false,
+    "physical_usb_tested": false,
+    "installed_app_replaced": false,
+    "evidence_directory": "/Users/min/Projects/quadmonitorDriver-backups/release-20260912-000459"
+  }
+}
