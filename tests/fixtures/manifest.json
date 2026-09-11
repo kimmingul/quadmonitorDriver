@@ -1,0 +1,26 @@
+[
+  {
+    "path": "config/panel-layout.json",
+    "source": "research/config/panel-layout.json",
+    "sha256": "7535dc161bff68a730dd5e2d0485f9025a5609e21cacb34346844ce8aefbd74b",
+    "bytes": 467
+  },
+  {
+    "path": "tests/fixtures/vendor_fixtures.json",
+    "source": "research/audit/2026-09-07/vendor_fixtures.json",
+    "sha256": "076498535cac1d970c6683ce63454154289e18303d1b994874e35bdcf8f167b6",
+    "bytes": 2979
+  },
+  {
+    "path": "tests/fixtures/parallel-encoder-fixtures.json",
+    "source": "research/audit/2026-09-09/parallel-encoder-fixtures.json",
+    "sha256": "3c199f33ef9a7b9f9b24b29f13c69377c19157f6acb7af5ffd920b32e9f966e8",
+    "bytes": 616
+  },
+  {
+    "path": "tests/fixtures/coldframe_000.bin",
+    "source": "research/payloads/coldframes/coldframe_000.bin",
+    "sha256": "a3ff1806ab2d7c5bbcadc63b3977ca0d03e850e1bf32d737f984afbe25e2473e",
+    "bytes": 826625
+  }
+]

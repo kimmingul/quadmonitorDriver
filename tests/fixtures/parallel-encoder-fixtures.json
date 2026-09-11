@@ -1,0 +1,22 @@
+{
+  "text": {
+    "bytes": 76673,
+    "sha256": "4411732e52a29c8571ca412c8d44b34690c71e30fdd5a310f02ec0865f6d8441"
+  },
+  "color": {
+    "bytes": 392193,
+    "sha256": "81ef633338f0efb9abef653930be81ca4550ee7f27afa5443909b11ee8a13b2b"
+  },
+  "selected511": {
+    "bytes": 38657,
+    "sha256": "af07a117644b9072002e78d1b1eba6b634c7971789955c02199f151ee9f183fc"
+  },
+  "selected512": {
+    "bytes": 38657,
+    "sha256": "4fbe5a9f4848d6bdbd59c575d7f521ce5fd9f83e23dca9ce8c0a1400c283ab62"
+  },
+  "selected513": {
+    "bytes": 38785,
+    "sha256": "8314fd55f2c7ce05b9da1e47605b289317e166cb99a5a07d6e4250eba7f1f7ba"
+  }
+}
