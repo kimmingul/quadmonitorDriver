@@ -1,0 +1,33 @@
+# macOS
+.DS_Store
+
+# Development-only Python test bytecode
+__pycache__/
+*.pyc
+build/
+
+# Swift Package Manager build output
+App/.build/
+App/Packages/
+App/.swiftpm/configuration/registries.json
+App/.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+
+# Xcode
+xcuserdata/
+DerivedData/
+
+# Runtime diagnostic captures (re-generated at runtime)
+App/diagnostics/
+
+# Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Credentials
+.netrc
+.mcp.json
+
+# OMC tooling state (project-memory.json, sessions/, state/)
+.omc/
