@@ -12,12 +12,13 @@ struct DesktopAppConfiguration: Sendable {
     var selectedPanels: [String] = ["right","left","top"]
     var language: AppLanguage = .system
     var performance = PerformanceOptions(workers:1,scheduling:.arrival)
+    var pinDock = true
 
-    private struct Preferences: Codable { var fps: Int; var demo: Bool; var panels: [String]; var performance: PerformanceOptions; var language: AppLanguage? }
+    private struct Preferences: Codable { var fps: Int; var demo: Bool; var panels: [String]; var performance: PerformanceOptions; var language: AppLanguage?; var pinDock: Bool? }
     static func validPanels(_ panels: [String]) -> Bool { !panels.isEmpty && Set(panels).count==panels.count && Set(panels).isSubset(of:["right","left","top"]) }
     func savePreferences() throws {
         try FileManager.default.createDirectory(at:controlDirectory,withIntermediateDirectories:true)
-        try JSONEncoder().encode(Preferences(fps:fps,demo:demo,panels:selectedPanels,performance:performance,language:language))
+        try JSONEncoder().encode(Preferences(fps:fps,demo:demo,panels:selectedPanels,performance:performance,language:language,pinDock:pinDock))
             .write(to:controlDirectory.appendingPathComponent("preferences.json"),options:.atomic)
     }
     var controlDirectory: URL { dataRoot.appendingPathComponent("control") }
@@ -67,6 +68,7 @@ struct DesktopAppConfiguration: Sendable {
             if !seen.contains("--fps") { config.fps=saved.fps }
             if !seen.contains("--demo") { config.demo=saved.demo }
             config.selectedPanels=saved.panels;config.performance=saved.performance;config.language=saved.language ?? .system
+            config.pinDock=saved.pinDock ?? true
         }
         return config
     }

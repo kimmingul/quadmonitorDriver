@@ -55,3 +55,10 @@
 "settingsNote" = "중지 후 설정을 변경하고 시작하세요. 설정은 자동 저장됩니다. GPU는 변경 영역 검사에 사용하며 JPEG 인코딩은 CPU가 처리합니다. 코어 수를 늘려도 더 빠르지 않을 수 있습니다.";
 "language" = "언어";
 "systemLanguage" = "시스템 설정";
+"pinDock" = "Dock을 주 디스플레이에 고정";
+"accessibility" = "손쉬운 사용 권한";
+"dockOff" = "Dock 고정 사용 안 함";
+"dockWaiting" = "시작하면 Dock을 주 디스플레이에 고정합니다";
+"dockPermission" = "Dock 고정에는 손쉬운 사용 권한이 필요합니다";
+"dockSide" = "Dock이 화면 아래쪽에 있을 때만 고정할 수 있습니다";
+"dockActive" = "Dock을 주 디스플레이에 고정 중";

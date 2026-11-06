@@ -23,7 +23,8 @@ if [ -z "$identity" ]; then
 fi
 if [ "$skip" -eq 0 ]; then
   for product in QuadMonitor VerifiedCapture VerifiedDesktopHost VerifiedSession; do
-    swift build --package-path "$root/App" -c release --product "$product"
+    # The bundle copy below expects the native SwiftPM layout (Swift 6.4 defaults to Swift Build).
+    swift build --build-system native --package-path "$root/App" -c release --product "$product"
   done
 fi
 mkdir -p "$output"
@@ -48,7 +49,7 @@ cat > "$contents/Info.plist" <<PLIST
 <key>CFBundleName</key><string>Quad Monitor</string>
 <key>CFBundleDisplayName</key><string>Quad Monitor</string>
 <key>CFBundlePackageType</key><string>APPL</string>
-<key>CFBundleVersion</key><string>4</string>
+<key>CFBundleVersion</key><string>5</string>
 <key>CFBundleShortVersionString</key><string>$version</string>
 <key>CFBundleDevelopmentRegion</key><string>en</string>
 <key>CFBundleLocalizations</key><array><string>en</string><string>ko</string><string>zh-Hans</string></array>
@@ -79,7 +80,7 @@ sign "$contents/Frameworks/libusb-1.0.0.dylib" com.quadmonitor.libusb library
 for helper in VerifiedCapture VerifiedDesktopHost VerifiedSession; do
   sign "$contents/Helpers/$helper" "com.quadmonitor.desktop.$helper" executable
 done
-(cd "$root" && rg --files App/Sources | LC_ALL=C sort | xargs shasum -a 256) > "$contents/Resources/build-sources.sha256"
+(cd "$root" && git ls-files --cached --others --exclude-standard App/Sources | LC_ALL=C sort | xargs shasum -a 256) > "$contents/Resources/build-sources.sha256"
 sign "$app" com.quadmonitor.desktop executable
 plutil -lint "$contents/Info.plist"
 if find "$app" \( -iname '*python*' -o -name '*.py' -o -name '*.pyc' \) -print | grep -q .; then

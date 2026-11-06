@@ -55,3 +55,10 @@
 "settingsNote" = "请先停止，再更改显示或性能设置，然后重新开始。设置会自动保存。GPU 用于检测变化，JPEG 编码由 CPU 完成。更多任务不一定更快。";
 "language" = "语言";
 "systemLanguage" = "跟随系统";
+"pinDock" = "将程序坞固定在主显示器";
+"accessibility" = "辅助功能权限";
+"dockOff" = "程序坞固定已关闭";
+"dockWaiting" = "开始后程序坞将固定在主显示器";
+"dockPermission" = "固定程序坞需要辅助功能权限";
+"dockSide" = "仅当程序坞位于屏幕底部时才能固定";
+"dockActive" = "程序坞已固定在主显示器";

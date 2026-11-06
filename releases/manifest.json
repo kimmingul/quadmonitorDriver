@@ -1,28 +1,28 @@
 {
-  "recorded_at": "2026-09-12",
-  "version": "0.3.1",
+  "recorded_at": "2026-11-06",
+  "version": "0.3.2",
   "prerelease": true,
   "artifacts": [
     {
-      "path": "build/QuadMonitor-0.3.1-arm64.pkg",
-      "bytes": 809767,
-      "sha256": "a7a08fdedfa4562e582c5900ebc046fba4d7bb62605d2035a768645697bc6df9",
+      "path": "build/QuadMonitor-0.3.2-arm64.pkg",
+      "bytes": 816277,
+      "sha256": "8a719584ac6f3996ba7c10ce0a732d2944a4e36912e5161ea186349a77d9e8aa",
       "role": "Developer ID signed macOS installer",
-      "download_url": "https://github.com/kimmingul/quadmonitorDriver/releases/download/v0.3.1/QuadMonitor-0.3.1-arm64.pkg"
+      "download_url": "https://github.com/kimmingul/quadmonitorDriver/releases/download/v0.3.2/QuadMonitor-0.3.2-arm64.pkg"
     },
     {
-      "path": "build/QuadMonitor-0.3.1-arm64.app.zip",
-      "bytes": 805823,
-      "sha256": "daa2687ba1c34e5dcebceb4c8b8fdb6801a1a2462a5fde00bd57b124fd886b70",
+      "path": "build/QuadMonitor-0.3.2-arm64.app.zip",
+      "bytes": 807930,
+      "sha256": "85557e898c10d1ef16c33bc7ce839d7503736827a0201a56cddb2299173158e6",
       "role": "Developer ID signed macOS app archive",
-      "download_url": "https://github.com/kimmingul/quadmonitorDriver/releases/download/v0.3.1/QuadMonitor-0.3.1-arm64.app.zip"
+      "download_url": "https://github.com/kimmingul/quadmonitorDriver/releases/download/v0.3.2/QuadMonitor-0.3.2-arm64.app.zip"
     },
     {
       "path": "build/QuadMonitor-Windows-ARM64-source.zip",
       "bytes": 17934,
-      "sha256": "459db3a694906536109653979de120837f615ddc2dcbcd0369d3d83c5d273bfc",
+      "sha256": "8c0b576b126cc662e3e610f170905df44a4d81b622e5994beb384c879bf8987a",
       "role": "Windows shared-core source only",
-      "download_url": "https://github.com/kimmingul/quadmonitorDriver/releases/download/v0.3.1/QuadMonitor-Windows-ARM64-source.zip"
+      "download_url": "https://github.com/kimmingul/quadmonitorDriver/releases/download/v0.3.2/QuadMonitor-Windows-ARM64-source.zip"
     }
   ]
 }

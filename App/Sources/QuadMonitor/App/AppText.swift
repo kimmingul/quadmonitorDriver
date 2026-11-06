@@ -19,7 +19,7 @@ enum AppLanguage: String, Codable, CaseIterable, Sendable {
 
 struct AppText {
     enum Key: String, CaseIterable {
-        case idle, right, left, top, panelWaiting, panelPreparing, panelDisabled, panelStats, start, stop, demo, rateMenu, rate, showWindow, permissionSettings, logs, runLogs, quit, windowTitle, permission, saveFailed, permissionRequired, starting, startFailed, stoppedCancelled, stopping, stopFailed, running, error, checkLogs, stopped, runFailed, sleeping, reconnecting, screens, screenNote, cpu, workerOne, workerCount, workersAuto, damage, gpu, timing, periodic, arrival, compression, delta, full, queue, frameCount, reuse, adaptive, overlap, settingsNote, language, systemLanguage
+        case idle, right, left, top, panelWaiting, panelPreparing, panelDisabled, panelStats, start, stop, demo, rateMenu, rate, showWindow, permissionSettings, logs, runLogs, quit, windowTitle, permission, saveFailed, permissionRequired, starting, startFailed, stoppedCancelled, stopping, stopFailed, running, error, checkLogs, stopped, runFailed, sleeping, reconnecting, screens, screenNote, cpu, workerOne, workerCount, workersAuto, damage, gpu, timing, periodic, arrival, compression, delta, full, queue, frameCount, reuse, adaptive, overlap, settingsNote, language, systemLanguage, pinDock, accessibility, dockOff, dockWaiting, dockPermission, dockSide, dockActive
     }
     let language: String
     private let bundle: Bundle

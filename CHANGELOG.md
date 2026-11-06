@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.2 — 2026-11-06 (prerelease)
+
+### Added
+
+- Dock pinning (default on): while a session runs, the bottom Dock stays on the system main display instead of following the cursor to Quad panels or other displays. Requires Accessibility permission; bottom hot corners on non-main displays may not respond while active.
+
+### Changed
+
+- Build and test scripts use SwiftPM's native build system (Swift 6.4 defaults to Swift Build, whose resource layout the bundle step does not expect), hash sources with `git ls-files` instead of `rg`, and add installer component keys that newer `pkgbuild` omits.
+
 ## 0.3.1 — 2026-09-12 (prerelease)
 
 ### Added

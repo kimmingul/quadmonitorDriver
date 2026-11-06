@@ -35,10 +35,15 @@ mkdir -p "$stage/payload/Applications"
 ditto "$app" "$stage/payload/Applications/Quad Monitor.app"
 pkgbuild --analyze --root "$stage/payload" "$stage/components.plist"
 index=0
+# Newer pkgbuild omits some keys from --analyze output; add them when absent.
+set_bool() {
+  /usr/libexec/PlistBuddy -c "Set :$index:$1 $2" "$stage/components.plist" 2>/dev/null ||
+    /usr/libexec/PlistBuddy -c "Add :$index:$1 bool $2" "$stage/components.plist"
+}
 while /usr/libexec/PlistBuddy -c "Print :$index" "$stage/components.plist" >/dev/null 2>&1; do
-  /usr/libexec/PlistBuddy -c "Set :$index:BundleIsRelocatable false" "$stage/components.plist"
-  /usr/libexec/PlistBuddy -c "Set :$index:BundleIsVersionChecked true" "$stage/components.plist"
-  /usr/libexec/PlistBuddy -c "Set :$index:BundleHasStrictIdentifier true" "$stage/components.plist"
+  set_bool BundleIsRelocatable false
+  set_bool BundleIsVersionChecked true
+  set_bool BundleHasStrictIdentifier true
   index=$((index + 1))
 done
 pkgbuild --root "$stage/payload" --component-plist "$stage/components.plist" --identifier com.quadmonitor.desktop --version "$version" --install-location / "$stage/QuadMonitor-component.pkg"

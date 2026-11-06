@@ -42,6 +42,9 @@ final class DesktopApp: NSObject, NSApplicationDelegate {
     private var demoButton: NSButton!
     private var ratePopup=NSPopUpButton()
     private var settingsView=DesktopSettingsView(frame:.zero)
+    private let dockPin=DockPin()
+    private var dockButton: NSButton!
+    private let dockStatus=NSTextField(wrappingLabelWithString:"")
 
     init(config: DesktopAppConfiguration) { self.config=config;self.text=AppText(choice:config.language) }
 
@@ -115,6 +118,11 @@ final class DesktopApp: NSObject, NSApplicationDelegate {
         let logs=NSButton(title:text(.runLogs),target:self,action:#selector(openLogs))
         let permissions=NSButton(title:text(.permission),target:self,action:#selector(openPermissions))
         let links=NSStackView(views:[logs,permissions]);links.orientation = .horizontal
+        dockButton=NSButton(checkboxWithTitle:text(.pinDock),target:self,action:#selector(toggleDockPin))
+        let accessibility=NSButton(title:text(.accessibility),target:self,action:#selector(openAccessibility))
+        let dockRow=NSStackView(views:[dockButton,accessibility]);dockRow.orientation = .horizontal
+        dockStatus.font = .systemFont(ofSize:11);dockStatus.textColor = .secondaryLabelColor
+        let dock=NSStackView(views:[dockRow,dockStatus]);dock.orientation = .vertical;dock.alignment = .leading;dock.spacing=4
         settingsView.changed = { [weak self] panels, performance in
             guard let self, self.process == nil, !self.recovery.waiting else { return }
             self.config.selectedPanels=panels;self.config.performance=performance;self.saveSettings();self.refresh()
@@ -125,9 +133,10 @@ final class DesktopApp: NSObject, NSApplicationDelegate {
         let languageRow=NSStackView(views:[languageLabel,languagePopup]);languageRow.orientation = .horizontal
         localizedLabels=[(title,.windowTitle),(languageLabel,.language)]
         localizedButtons=[(startButton,.start),(stopButton,.stop),(demoButton,.demo),
-                          (quitButton,.quit),(logs,.runLogs),(permissions,.permission)]
+                          (quitButton,.quit),(logs,.runLogs),(permissions,.permission),
+                          (dockButton,.pinDock),(accessibility,.accessibility)]
         localize()
-        let stack=NSStackView(views:[title,windowStatus,windowPanels,buttons,languageRow,options,settingsView,links])
+        let stack=NSStackView(views:[title,windowStatus,windowPanels,buttons,languageRow,options,dock,settingsView,links])
         stack.orientation = .vertical;stack.alignment = .leading;stack.spacing=18
         stack.translatesAutoresizingMaskIntoConstraints=false;w.contentView!.addSubview(stack)
         NSLayoutConstraint.activate([stack.leadingAnchor.constraint(equalTo:w.contentView!.leadingAnchor,constant:24),
@@ -228,6 +237,7 @@ final class DesktopApp: NSObject, NSApplicationDelegate {
     }
     @objc private func didWake() { recovery.didWake();recordRecovery("did_wake");nextPresenceCheck=0;refresh() }
     @objc private func toggleDemo() { config.demo.toggle();saveSettings();refresh() }
+    @objc private func toggleDockPin() { config.pinDock=dockButton.state == .on;saveSettings();refresh() }
     @objc private func changeRate(_ sender: NSMenuItem) { config.fps=sender.tag;saveSettings();refresh() }
     @objc private func openLogs() {
         if let runDirectory { NSWorkspace.shared.open(runDirectory) }
@@ -238,8 +248,10 @@ final class DesktopApp: NSObject, NSApplicationDelegate {
         }
     }
     @objc private func quit() { NSApp.terminate(nil) }
-    @objc private func openPermissions() {
-        if let url=URL(string:"x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture") {
+    @objc private func openPermissions() { openPrivacy("Privacy_ScreenCapture") }
+    @objc private func openAccessibility() { openPrivacy("Privacy_Accessibility") }
+    private func openPrivacy(_ pane: String) {
+        if let url=URL(string:"x-apple.systempreferences:com.apple.preference.security?\(pane)") {
             NSWorkspace.shared.open(url)
         }
     }
@@ -331,6 +343,10 @@ final class DesktopApp: NSObject, NSApplicationDelegate {
         checkRecovery()
         let active=process?.isRunning == true
         let waiting=recovery.waiting
+        // Dock pinning follows the session: on while it runs, off once it ends.
+        dockPin.update(enabled:config.pinDock && active)
+        dockButton?.state=config.pinDock ? .on : .off
+        dockStatus.stringValue=text(dockStatusKey)
         settingsView.refresh(panels:config.selectedPanels,options:config.performance,enabled:!active && !waiting)
         for (index,role) in ["right","left","top"].enumerated() where index < panels.count {
             let name=text.panelNames[index]
@@ -351,5 +367,15 @@ final class DesktopApp: NSObject, NSApplicationDelegate {
         stopItem?.isEnabled = (active && !stopping) || waiting
         demoItem?.isEnabled = !active && !waiting;demoItem?.state=config.demo ? .on : .off
         for row in rates { row.isEnabled = !active && !waiting;row.state=row.tag==config.fps ? .on : .off }
+    }
+
+    private var dockStatusKey: AppText.Key {
+        guard config.pinDock else { return .dockOff }
+        switch dockPin.state {
+        case .off: return .dockWaiting
+        case .needsPermission: return .dockPermission
+        case .unsupportedSide: return .dockSide
+        case .active: return .dockActive
+        }
     }
 }

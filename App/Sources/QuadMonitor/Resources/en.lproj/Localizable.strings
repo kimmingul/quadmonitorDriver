@@ -55,3 +55,10 @@
 "settingsNote" = "Stop before changing display or performance settings, then start again. Settings save automatically. The GPU detects changes; JPEG encoding runs on the CPU. More workers may not be faster.";
 "language" = "Language";
 "systemLanguage" = "System default";
+"pinDock" = "Keep the Dock on the main display";
+"accessibility" = "Accessibility permission";
+"dockOff" = "Dock pinning off";
+"dockWaiting" = "The Dock stays on the main display after Start";
+"dockPermission" = "Dock pinning needs Accessibility permission";
+"dockSide" = "Dock pinning works only when the Dock is at the bottom";
+"dockActive" = "Dock pinned to the main display";

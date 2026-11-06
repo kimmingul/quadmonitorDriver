@@ -1,6 +1,6 @@
 # Development and build guide
 
-The macOS product is a native Swift/C app. Development requires Swift/Xcode, build-time libusb, rg, and Developer ID certificates. Python is not required to run the product or produce a production build. The target is Apple Silicon/macOS 26 or later.
+The macOS product is a native Swift/C app. Development requires Swift/Xcode, build-time libusb, Git, and Developer ID certificates. Python is not required to run the product or produce a production build. The target is Apple Silicon/macOS 26 or later. Scripts build with `--build-system native` because the app bundle copy expects the native SwiftPM resource layout.
 
 ## Build and sign
 
@@ -12,11 +12,11 @@ scripts/build_native_installer.sh
 scripts/verify_native_app.sh
 ```
 
-The app is `build/Quad Monitor.app`; the installer is `build/QuadMonitor-0.3.1-arm64.pkg`. Installer builds also create `build/standalone/Quad Monitor.app`. Replaced build apps are backed up under `build/archive/`. Building alone does not replace the app installed in `/Applications`.
+The app is `build/Quad Monitor.app`; the installer is `build/QuadMonitor-<VERSION>-arm64.pkg`. Installer builds also create `build/standalone/Quad Monitor.app`. Replaced build apps are backed up under `build/archive/`. Building alone does not replace the app installed in `/Applications`.
 
 If multiple certificates are available, select the app identity with `--sign-identity` / `QUAD_MONITOR_SIGN_IDENTITY` and the installer identity with `--installer-identity` / `QUAD_MONITOR_INSTALLER_IDENTITY`. Both must belong to the same team. `--sign-identity -` is temporary development signing and cannot be used for a signed installer package. Do not use `--skip-build` after source changes or without an existing build cache. Developer ID signing and Apple notarization are separate.
 
-The release version is read from the root `VERSION` file. The published tag must be `v` followed by that exact version; the installer reads the same version from the signed app. Bundle build 4 identifies 0.3.1.
+The release version is read from the root `VERSION` file. The published tag must be `v` followed by that exact version; the installer reads the same version from the signed app. Bundle build 5 identifies 0.3.2 (build 4 was 0.3.1).
 
 Configuration input is `config/panel-layout.json`. The bundled `build-sources.sha256` records product source hashes. Do not assume current source hashes match the distributed app.
 

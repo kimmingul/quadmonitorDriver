@@ -11,7 +11,7 @@ fi
 trap 'if [ "$owned" -eq 1 ]; then rm -rf "$scratch"; fi' EXIT
 mkdir -p "$scratch"
 cd "$root"
-swift test --package-path App --scratch-path "$scratch/swift"
+swift test --build-system native --package-path App --scratch-path "$scratch/swift"
 cmake -S windows -B "$scratch/core" -DCMAKE_BUILD_TYPE=Release
 cmake --build "$scratch/core"
 ctest --test-dir "$scratch/core" --output-on-failure

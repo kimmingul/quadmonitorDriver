@@ -4,17 +4,17 @@
 
 The app turns three RACERTECH USB DISP panels connected through one USB-C cable into independent extended Mac displays. It prioritizes responsive cursor and window movement during coding and document work.
 
-The current macOS prerelease is **0.3.1, implemented in Swift/C and running without Python**. Windows ARM64 is at the shared-core development stage. See [current status and next steps](docs/current-status.md).
+The current macOS prerelease is **0.3.2, implemented in Swift/C and running without Python**. Windows ARM64 is at the shared-core development stage. See [current status and next steps](docs/current-status.md).
 
 ## Installation and launch
 
-Use the [0.3.1 signed installer](https://github.com/kimmingul/quadmonitorDriver/releases/download/v0.3.1/QuadMonitor-0.3.1-arm64.pkg). It targets Apple Silicon/macOS 26 or later and includes the panel ID/location mapping verified in this project. It is Developer ID signed; Apple notarization remains pending.
+Use the [0.3.2 signed installer](https://github.com/kimmingul/quadmonitorDriver/releases/download/v0.3.2/QuadMonitor-0.3.2-arm64.pkg). It targets Apple Silicon/macOS 26 or later and includes the panel ID/location mapping verified in this project. It is Developer ID signed; Apple notarization remains pending.
 
 ```bash
 open "/Applications/Quad Monitor.app"
 ```
 
-Apply settings in this order: **Stop → change options → Start**. Grant Screen Recording permission to the installed app. Preferences are stored at `~/Library/Application Support/Quad Monitor/control/preferences.json`; logs are in `runs/` under the same `Quad Monitor/` directory.
+Apply settings in this order: **Stop → change options → Start**. Grant Screen Recording permission to the installed app; Dock pinning additionally needs Accessibility permission, requested at the first Start. Preferences are stored at `~/Library/Application Support/Quad Monitor/control/preferences.json`; logs are in `runs/` under the same `Quad Monitor/` directory.
 
 ## Settings
 
@@ -29,8 +29,11 @@ Apply settings in this order: **Stop → change options → Start**. Grant Scree
 | Capture buffers | queueDepth 2 / 3 / 5 |
 | Additional algorithms | Buffer reuse / adaptive worker count / preparation during transfer |
 | Update limit | 2 / 10 / 30 / 60fps, demo mode |
+| Dock pinning | On (default) / off; can change while running |
 
 Deselecting a panel does not turn off its power. Enabling every option is not always faster, and USB completion rate differs from physical display rate. User satisfaction with the earlier Python relay version does not establish the still-unverified hardware performance of native 0.3.x.
+
+macOS has no setting to keep the Dock on one display: a bottom Dock follows the cursor to any display whose free bottom edge it presses. While a session runs, Dock pinning withholds mouse-moved events in the bottom 3pt of free bottom edges on every display except the system main display (System Settings → Displays), and moves an already-relocated Dock back. Bottom hot corners on other displays may therefore not respond during a session. A Dock on the left or right side is not pinned.
 
 ## Development
 

@@ -2,7 +2,7 @@
 
 ## macOS
 
-The current prerelease is **Quad Monitor 0.3.1**, a Swift/C app for Apple Silicon/macOS 26 or later. Python runtime and production-build dependencies have been removed. It supports three independent displays, Korean/English/Simplified Chinese, panel selection, and CPU/Metal, scheduling, buffering, adaptive worker, and speculative preparation options.
+The current prerelease is **Quad Monitor 0.3.2**, a Swift/C app for Apple Silicon/macOS 26 or later. Python runtime and production-build dependencies have been removed. It supports three independent displays, Korean/English/Simplified Chinese, panel selection, and CPU/Metal, scheduling, buffering, adaptive worker, and speculative preparation options, and Dock pinning to the main display during sessions.
 
 Developer ID Application/Installer signing, installation, relocated execution, and preference preservation were verified. Apple notarization remains pending. Current source includes Windows portability and path changes made after release; do not assume its hashes match the installed app. The repository reorganization did not replace the installed app or existing macOS 0.3.0 package.
 
@@ -29,6 +29,10 @@ See the [test guide](../tests/README.md) for automated checks, [releases](../rel
 Verified 47 Swift tests, 29 production C/independent-oracle tests, four CMake tests, two ASan/UBSan harnesses, an external temporary Developer ID installer build and relocated execution, and a host build of the extracted Windows source ZIP. App algorithms, the installed app, and the existing macOS package were preserved. See the [validation summary](validation.json). Long logs and removed intermediate materials are in the [external archive](archive.md).
 
 The source directory is now `App/`, and the Swift package/app module is `QuadMonitor`. The README explicitly identifies the project as an optimization based on RacerUSB. After renaming, all 80 tests, Developer ID app/installer builds, relocated execution, three packaged languages with English fallback, and extracted Windows ZIP core checks passed again. Validation builds are stored externally; existing macOS releases and the installed app were retained.
+
+## 0.3.2 release — 2026-11-06
+
+Added Dock pinning (bundle build 5). Signed app and installer were rebuilt with Developer ID and verified; relocated execution passed. Dock pinning was exercised on Quad virtual panels (blocked edge and corner presses, relocation back to the main display). Build scripts now use the native SwiftPM build system and `git ls-files` instead of `rg`. Physical panel acceptance and notarization remain pending.
 
 ## 0.3.1 release validation — 2026-09-12
 

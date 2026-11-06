@@ -49,7 +49,7 @@ final class AppTextTests: XCTestCase {
         try old.write(to:directory.appendingPathComponent("preferences.json"))
         let defaults=["resources":"/tmp/Resources","coordinator":"/tmp/VerifiedSession","data_root":root.path]
         var config=try DesktopAppConfiguration.parse(["app"],defaults:defaults)
-        XCTAssertEqual(config.language,.system);XCTAssertEqual(config.fps,60)
+        XCTAssertEqual(config.language,.system);XCTAssertEqual(config.fps,60);XCTAssertTrue(config.pinDock)
         XCTAssertEqual(config.selectedPanels,["left","top"]);XCTAssertTrue(config.performance.reuseBuffers)
         let arguments=config.workerArguments()
         for language in AppLanguage.allCases {
@@ -58,5 +58,7 @@ final class AppTextTests: XCTestCase {
             XCTAssertEqual(loaded.language,language)
             XCTAssertEqual(loaded.workerArguments(),arguments)
         }
+        config.pinDock=false;try config.savePreferences()
+        XCTAssertFalse(try DesktopAppConfiguration.parse(["app"],defaults:defaults).pinDock)
     }
 }
